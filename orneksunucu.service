@@ -1,0 +1,11 @@
+[Unit]
+Description= Sunucu örneği
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/acikKaynak
+ExecStart=/usr/bin/gunicorn --workers 5 --bind unix:app.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
